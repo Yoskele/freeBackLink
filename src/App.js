@@ -1,25 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import React from "react";
+import Routes from "./Routes";
+import "./App.css";
+import ArticleContextProvider from "./components/contexts/ArticleContext";
+import AuthContextProvider from "./components/contexts/AuthContext";
+import FashionContextProvider from "./components/contexts/FashionContext";
+import Footer from "./components/templates/Footer";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthContextProvider>
+      <ArticleContextProvider>
+        <FashionContextProvider>
+          <div className="App">
+            <Routes />
+            {/* <Footer /> */}
+          </div>
+        </FashionContextProvider>
+      </ArticleContextProvider>
+    </AuthContextProvider>
   );
 }
 
